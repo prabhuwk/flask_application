@@ -1,1 +1,31 @@
-<h1>hello world</h1>
+{% extends 'base.html' %}
+{% block title %}User Information{% endblock %}
+{% block page_content %}
+<body>
+    <div class='container'>
+        <div class='row well text-center'>
+            <div class='col-md-12'>
+                <h1>User Information</h1>
+                <p>Find User related information for unix systems.</p>
+            </div>
+        </div>
+        <div class='row'>
+            <div class='col-md-4'>
+                <h2> Introduction </h2>
+                <p>This helps team perform basic Unix Operations.</p>
+                <p>Find out information about the userid.</p>
+            </div>
+            <div class='col-md-4'>
+                <img src='static/images/userid.png' alt='profile'/>
+            </div>
+            <div class='col-md-4 center'>
+                <h2>Identify</h2>
+                <li>Active Users</li>
+                <li>Disabled Password</li>
+                <li>Re-Hire Account</li>
+                <li>Non-Existent Users</li>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
