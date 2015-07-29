@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}   
+
+{% block title %}User Information{% endblock %}                                      
+                                                                                     
+{% block page_content %}                                                             
+<body>                                                                               
+    <div class="container">                                                          
+        <div class="row well">                                                       
+            <div class="col-md-5 col-md-offset-4">                                   
+            <h3>Unix Server</h3>                                                     
+            {% if pw_file_id_details %}                                                           
+               {% if pw_file_id_details[1] | first == 'X'  %}                                     
+                   ID {{ pw_file_id_details[0] }} exists on server, but is prefixed with X. 
+               {% elif pw_file_id_details[2] == 'DISABLED' %}                                     
+                   {{ pw_file_id_details[1] }} ID exists, but password is DISABLED.               
+               {% elif pw_file_id_details[1] %}                                                   
+                   {{ pw_file_id_details[1] }} ID exists.</div>                                   
+               {% elif pw_file_id_details[0] is defined and pw_file_id_details[1] is not defined %}            
+                   ID {{ pw_file_id_details[0] }} doesn't exist.                                  
+               {% endif %}                                                           
+            {% else %}                                                               
+               Unable to find user.                                                  
+            {% endif %}                                                              
+            </div>                                                                   
+        </div>                                                                       
+    </div>
+</body>
+{% endblock %}

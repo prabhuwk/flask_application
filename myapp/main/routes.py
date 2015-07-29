@@ -4,6 +4,7 @@ from flask.ext.login import login_required, login_user, logout_user, current_use
 from .forms import LoginForm, CheckUserForm
 from ..models import User
 import ldap
+from .localuser import localUserCheck
 
 @main.route('/')
 def index():
@@ -38,4 +39,9 @@ def logout():
 @login_required
 def checkuser():
 	form = CheckUserForm()
+	if form.validate_on_submit():
+		name = form.checkusername.data
+		pw_file_id_details = localUserCheck(name)		
+		return render_template('useridresult.html', pw_file_id_details = pw_file_id_details)
+		form.checkusername.data = ''
 	return render_template('checkuser.html', form=form)
