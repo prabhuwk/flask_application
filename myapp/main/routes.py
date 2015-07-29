@@ -1,7 +1,7 @@
 from . import main
 from flask import render_template, redirect, url_for, request, g
 from flask.ext.login import login_required, login_user, logout_user, current_user
-from .forms import LoginForm
+from .forms import LoginForm, CheckUserForm
 from ..models import User
 import ldap
 
@@ -33,3 +33,9 @@ def login():
 def logout():
 	logout_user()
 	return redirect(url_for('main.index'))
+
+@main.route('/checkuser', methods=['GET','POST'])
+@login_required
+def checkuser():
+	form = CheckUserForm()
+	return render_template('checkuser.html', form=form)

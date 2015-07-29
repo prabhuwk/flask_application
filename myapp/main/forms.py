@@ -7,3 +7,7 @@ class LoginForm(Form):
 	password = PasswordField('Password', validators=[Required()])
 	remember_me = BooleanField('Remember me')
 	submit = SubmitField('Submit')
+
+class CheckUserForm(Form):
+	checkusername = StringField('Please enter userid', validators=[DataRequired(), Length(3,16)])
+	submit = SubmitField('Submit')
