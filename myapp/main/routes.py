@@ -1,5 +1,5 @@
 from . import main
-from flask import render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, g
 from flask.ext.login import login_required, login_user, logout_user, current_user
 from .forms import LoginForm
 from ..models import User
@@ -27,3 +27,9 @@ def login():
 		login_user(user, form.remember_me.data)
 		return redirect(request.args.get('next') or url_for('main.index'))
 	return render_template('login.html', form=form)
+
+@main.route('/logout')
+@login_required
+def logout():
+	logout_user()
+	return redirect(url_for('main.index'))
