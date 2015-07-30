@@ -16,3 +16,5 @@ It basically helps teams to login using ldap authentication and perform basic us
 - Non-Existent Users
 
 It also connects to openldap to fetch userid information. 
+
+![alt tag]https://github.com/prabhuwk/flask_application/blob/master/myapp/static/images/index.png
